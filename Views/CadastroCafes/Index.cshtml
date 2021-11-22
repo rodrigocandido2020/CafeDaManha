@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CafeDaManha.Models.CadastroCafe>
+
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<h1>Cadastro</h1>
+
+<p>
+    <a class="btn btn-primary btn-lg" asp-action="Create">Novo Cadastro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Alimento)
+            </th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alimento)
+            </td>
+          
+            <td>                
+                <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">Ver</a>
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
