@@ -56,13 +56,22 @@ namespace CafeDaManha.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Alimento")] CadastroCafe cadastroCafe)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(cadastroCafe);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(cadastroCafe);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
-         
+            catch (DbUpdateException)
+            {
+                
+                ModelState.AddModelError("", "Incapaz de salvar as alterações. " +
+                    "Tente novamente e se o problema persistir " +
+                    "consulte o administrador do sistema..");
+            }
             return View(cadastroCafe);
         }
 
