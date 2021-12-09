@@ -15,17 +15,16 @@ namespace CafeDaManha.Models
 
         public int Id { get; set; }
 
-        [StringLength(30, MinimumLength = 4)]
-        [Required]
+        [StringLength(30, ErrorMessage = "{0} Minimo {2} caracteres é maximo {1} ." ,MinimumLength = 4)]
+        [Required(ErrorMessage = "O campo {0} é Requirido")]
         public string Nome { get; set; }
 
-        [RegularExpression(@"^\d{3}\x2E\d{3}\x2E\d{3}\x2D\d{2}$")]
-        [Required]
+        [Required(ErrorMessage = "O campo {0} é Requirido")]
         public string Cpf { get; set; }
 
 
-        [StringLength(30, ErrorMessage = "{0} teste {2} and {1}.", MinimumLength = 4)]
-        [Required]        
+        [StringLength(30, ErrorMessage = "{0} Minimo {2} caracteres é maximo {1} .", MinimumLength = 4)]
+        [Required(ErrorMessage = "O campo {0} é Requirido")]
         public string Alimento { get; set; }
     }
     
