@@ -26,6 +26,7 @@ namespace CafeDaManha.Controllers
         }
 
         // GET: CadastroCafes/Details/5
+        [Route (template: "Detalhes")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +45,7 @@ namespace CafeDaManha.Controllers
         }
 
         // GET: CadastroCafes/Create
+        [Route(template: "Criar")]
         public IActionResult Create()
         {
             return View();
@@ -51,9 +53,9 @@ namespace CafeDaManha.Controllers
 
         // POST: CadastroCafes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route(template: "Criar")]
         public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Alimento")] CadastroCafe cadastroCafe)
         {
             try
@@ -76,6 +78,7 @@ namespace CafeDaManha.Controllers
         }
 
         // GET: CadastroCafes/Edit/5
+        [Route(template: "Editar")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,10 +95,10 @@ namespace CafeDaManha.Controllers
         }
 
         // POST: CadastroCafes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, enable the specific properties you want to bind to..
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route(template: "Editar")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Alimento")] CadastroCafe cadastroCafe)
         {
             if (id != cadastroCafe.Id)
@@ -127,6 +130,7 @@ namespace CafeDaManha.Controllers
         }
 
         // GET: CadastroCafes/Delete/5
+        [Route(template: "Apagar")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -147,6 +151,7 @@ namespace CafeDaManha.Controllers
         // POST: CadastroCafes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Route(template: "Apagar")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var cadastroCafe = await _context.CadastroCafe.FindAsync(id);
